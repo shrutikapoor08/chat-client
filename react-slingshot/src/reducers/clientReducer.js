@@ -1,15 +1,20 @@
 import * as types from '../actions/actionTypes';
 
-export default function clientReducer(state = {}, action) {
+const initialState = {
+  messages: '',
+  typingMessage: ''
+};
+
+export default function clientReducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
     case types.SENDMESSAGE:
-      newState = { messages: action.value, ...state };
+      newState = { ...state, messages: action.value };
       return newState;
 
     case types.TYPING:
-      newState = { ...state };
+      newState = { ...state, typingMessage: action.value };
       return newState;
 
     default:

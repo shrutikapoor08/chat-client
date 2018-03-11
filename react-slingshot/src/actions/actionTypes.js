@@ -1,2 +1,2 @@
-export const SENDMESSAGE = 'SEND';
+export const SENDMESSAGE = 'SENDMESSAGE';
 export const TYPING = 'TYPING';

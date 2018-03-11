@@ -6,3 +6,10 @@ export function sendMessage(message) {
     value: message
   };
 }
+
+export function typingMessage(message) {
+  return {
+    type: types.TYPING,
+    value: message
+  };
+}
