@@ -1,54 +1,37 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../actions/clientActions';
-import MessageTextInput from './MessageTextInput';
+import Client from './containers/Client';
+import '../styles/App.scss';
 
 class App extends React.Component {
-  onSend = () => {
-    const { typingMessage } = this.props;
-    this.props.actions.sendMessage(typingMessage);
+  getUserLaura = () => {
+    const userLaura = {
+      id: 234,
+      name: 'Laura Curley'
+    };
+    return userLaura;
   };
 
-  onStartTyping = event => {
-    //rename action to messageBeingTyped
-    this.props.actions.typingMessage(event.target.value);
+  getUserBob = () => {
+    const userLaura = {
+      id: 456,
+      name: 'Bob Handler'
+    };
+    return userLaura;
   };
 
   render() {
     return (
       <div>
-        <div> Test </div>
-        <MessageTextInput
-          name="message"
-          onChange={this.onStartTyping}
-          placeholder="Send a message to Rob"
-          value={this.props.typingMessage}
-          onSend={this.onSend}
-        />
+        <div>
+          <h1>Welcome to Client Chat! </h1>
+        </div>
+        <div className="chat-window">
+          <Client user={this.getUserLaura()} />
+          <Client user={this.getUserBob()} />
+        </div>
       </div>
     );
   }
 }
 
-App.propTypes = {
-  actions: PropTypes.object.isRequired,
-  typingMessage: PropTypes.string,
-  messages: PropTypes.string
-};
-
-function mapStateToProps(state) {
-  return {
-    messages: state.clientReducer.messages,
-    typingMessage: state.clientReducer.typingMessage
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -5,7 +5,7 @@ const initialState = {
   typingMessage: ''
 };
 
-export default function clientReducer(state = initialState, action) {
+export default function serverReducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
@@ -21,13 +21,3 @@ export default function clientReducer(state = initialState, action) {
       return state;
   }
 }
-
-//
-// messages: {
-// timestamp : {
-//   sender: {name: 'Bob', id: 123}
-//   recepient: {name: 'Laura', id: 456}
-//   timestamp: timestamp,
-//   contents: 'sup',
-// }
-// }

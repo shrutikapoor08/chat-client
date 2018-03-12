@@ -29,6 +29,7 @@
   "author": "Shruti Kapoor",
   "license": "MIT",
   "dependencies": {
+    "moment": "2.21.0",
     "object-assign": "4.1.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
