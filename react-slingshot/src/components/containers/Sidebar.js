@@ -14,8 +14,7 @@ class Sidebar extends React.Component {
               <div key={user.id} className="recentUser">
                 {user.name}
               </div>
-            )
-          )}
+            ))}
         </div>
       </div>
     );
@@ -23,7 +22,7 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  recentUsers: PropTypes.object.isRequired
+  recentUsers: PropTypes.array.isRequired
 };
 
 export default Sidebar;
