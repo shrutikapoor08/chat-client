@@ -3,7 +3,8 @@
 **Installation**
 
 1. `npm install`
-2. `npm start`
+2. `brew install watchman`
+3. `npm start`
 
 ## Initial Machine Setup
 
