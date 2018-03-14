@@ -7,11 +7,15 @@ class Sidebar extends React.Component {
     const { recentUsers } = this.props;
     return (
       <div className="sidebar">
-        <div className="companyHeadline">ASAPP</div>
-        <div className="usersList">
+        <div className="team-menu">
+          <div className="company-headline">ASAPP</div>
+          <div className="user">{this.props.user.name}</div>
+        </div>
+        <div className="users-list">
+          <h3>Direct messages</h3>
           {recentUsers &&
             recentUsers.map(user => (
-              <div key={user.id} className="recentUser">
+              <div key={user.id} className="recent-user">
                 {user.name}
               </div>
             ))}
@@ -22,7 +26,8 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  recentUsers: PropTypes.array.isRequired
+  recentUsers: PropTypes.array.isRequired,
+  user: PropTypes.object
 };
 
 export default Sidebar;

@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MessageTextInput = ({ name, value, onChange, placeholder, onSend }) => {
+const MessageTextInput = ({ name, onChange, placeholder, onKeyDown }) => {
   return (
-    <div>
+    <div className="message-input">
       <input
-        className="small"
+        className="textinput"
         name={name}
         type="text"
-        value={value}
         placeholder={placeholder}
         onChange={onChange}
+        onKeyDown={onKeyDown}
       />
-      <input type="submit" onClick={onSend} value="Send" />
     </div>
   );
 };
@@ -23,8 +22,7 @@ MessageTextInput.propTypes = {
   name: string.isRequired,
   onChange: func.isRequired,
   placeholder: string,
-  value: string,
-  onSend: func.isRequired
+  onKeyDown: func.isRequired
 };
 
 export default MessageTextInput;

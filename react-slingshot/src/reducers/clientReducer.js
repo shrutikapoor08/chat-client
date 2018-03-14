@@ -1,8 +1,8 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  messages: '',
-  typingMessage: ''
+  messages: [],
+  typingMessage: {}
 };
 
 export default function clientReducer(state = initialState, action) {
@@ -10,24 +10,21 @@ export default function clientReducer(state = initialState, action) {
 
   switch (action.type) {
     case types.SENDMESSAGE:
-      newState = { ...state, messages: action.value };
+      newState = {
+        ...state,
+        messages: [...state.messages, action.value]
+      };
       return newState;
 
     case types.TYPING:
-      newState = { ...state, typingMessage: action.value };
+      const { user, message } = action.value;
+      newState = {
+        ...state,
+        typingMessage: { [user.id]: message }
+      };
       return newState;
 
     default:
       return state;
   }
 }
-
-//
-// messages: {
-// timestamp : {
-//   sender: {name: 'Bob', id: 123}
-//   recepient: {name: 'Laura', id: 456}
-//   timestamp: timestamp,
-//   contents: 'sup',
-// }
-// }

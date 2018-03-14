@@ -1,10 +1,27 @@
 .sidebar {
-  border-right: 2px solid #ccc;
-  padding: 20px 10px;
-  .companyHeadline {
-    font-size: 23px;
-    color: #ddd;
+  width: 250px;
+  border-right: 1px solid #ccc;
+  padding: 2rem 1rem;
+  background: #393d47;
+  color: rgb(202, 196, 201);
+  font-size: 1rem;
+  .team-menu {
+    min-height: 61px;
+    padding-bottom: 3rem;
+    .company-headline {
+      font-size: 23px;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
   }
-  .recentUser {
+  .users-list {
+    h3 {
+      font-weight: 400;
+    }
+    .recent-user {
+      font-size: 1rem;
+      margin: 0.5rem 0rem;
+    }
   }
 }

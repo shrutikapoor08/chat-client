@@ -3,6 +3,7 @@ import Client from './containers/Client';
 import '../styles/App.scss';
 
 class App extends React.Component {
+  //TODO: move this to serverActions and use as an action
   getUserLaura = () => {
     const userLaura = {
       id: 234,
@@ -21,14 +22,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Welcome to Client Chat! </h1>
-        </div>
-        <div className="chat-window">
-          <Client user={this.getUserLaura()} />
-          <Client user={this.getUserBob()} />
-        </div>
+      <div className="chat-window">
+        <Client user={this.getUserLaura()} recepient={this.getUserBob()} />
+        <Client user={this.getUserBob()} recepient={this.getUserLaura()} />
       </div>
     );
   }

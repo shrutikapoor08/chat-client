@@ -7,6 +7,8 @@ import '../../styles/Client.scss';
 class Client extends React.Component {
   getRecentUsers = () => {
     const currentUser = this.props.user;
+    //TODO: get this from users.json
+    //this fucntion can go to serverActions
     if (currentUser.name === 'Laura Curley') {
       return [
         {
@@ -25,17 +27,20 @@ class Client extends React.Component {
 
   render() {
     return (
-      // TODO: recentUsers is undefined
       <div className="client-window">
-        <Sidebar recentUsers={this.getRecentUsers()} />
-        <ChatInterface user={this.props.user} />
+        <Sidebar user={this.props.user} recentUsers={this.getRecentUsers()} />
+        <ChatInterface
+          user={this.props.user}
+          recepient={this.props.recepient}
+        />
       </div>
     );
   }
 }
 
 Client.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  recepient: PropTypes.object.isRequired
 };
 
 export default Client;
