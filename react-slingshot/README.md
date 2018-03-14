@@ -3,9 +3,12 @@
 **Installation**
 
 1. `npm install`
-2. `npm start`
+2. `brew install watchman`
+3. `npm start`
 
 ## Initial Machine Setup
+
+**Adapted from React Slingshot**
 
 1. **Install [Node 4.0.0 or greater](https://nodejs.org)** - (5.0 or greater is recommended for optimal build performance). Need to run multiple versions of Node? Use [nvm](https://github.com/creationix/nvm).
 2. **Install [Git](https://git-scm.com/downloads)**.
@@ -21,6 +24,11 @@
 
 * **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
 * **Install C++ Compiler**. Browser-sync requires a C++ compiler on Windows. [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler. Or, if you already have Visual Studio installed: Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop. The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
+
+## TODOs
+
+1. Implement `serverActions`
+2. Extract out Laura and Bob from components and move them to constants `users.json`.
 
 ## Having Issues? Try these things first.
 
