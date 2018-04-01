@@ -20,7 +20,7 @@ export default function clientReducer(state = initialState, action) {
       const { user, message } = action.value;
       newState = {
         ...state,
-        typingMessage: { [user.id]: message }
+        typingMessage: { ...state.typingMessage, [user.id]: message }
       };
       return newState;
 
