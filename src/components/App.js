@@ -22,10 +22,12 @@ class App extends React.Component {
   };
 
   render() {
+    const userLaura = this.getUserLaura();
+    const userBob = this.getUserBob();
     return (
       <div className="chat-window">
-        <Client user={this.getUserLaura()} recepient={this.getUserBob()} />
-        <Client user={this.getUserBob()} recepient={this.getUserLaura()} />
+        {userLaura && <Client user={userLaura} recepient={this.getUserBob()} />}
+        {userBob && <Client user={userBob} recepient={this.getUserLaura()} />}
       </div>
     );
   }

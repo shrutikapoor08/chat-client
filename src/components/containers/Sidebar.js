@@ -5,7 +5,6 @@ import '../../styles/Sidebar.scss';
 class Sidebar extends React.Component {
   render() {
     const { recentUsers } = this.props;
-    console.log(recentUsers);
     return (
       <div className="sidebar">
         <div className="team-menu">
