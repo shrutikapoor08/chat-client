@@ -13,3 +13,10 @@ export function typingMessage(message) {
     value: message
   };
 }
+
+export function fetchUsers(value) {
+  return {
+    type: types.FETCHUSERS,
+    value: value
+  };
+}
