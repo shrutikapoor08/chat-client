@@ -28,7 +28,7 @@
 ## TODOs
 
 1. Implement `serverActions`
-2. Extract out Laura and Bob from components and move them to constants `users.json`.
+2. Extract out Laura and Bob from components and move them to constants `users.json`. [DONE]
 
 ## Having Issues? Try these things first.
 

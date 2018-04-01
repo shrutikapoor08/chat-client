@@ -2,27 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
 import ChatInterface from './ChatInterface';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions/clientActions';
 import '../../styles/Client.scss';
 
 class Client extends React.Component {
   getRecentUsers = () => {
-    const currentUser = this.props.user;
-    //TODO: get this from users.json
-    //this fucntion can go to serverActions
-    if (currentUser.name === 'Laura Smith') {
-      return [
-        {
-          name: 'Bob Handler',
-          id: 456
-        }
-      ];
-    } else
-      return [
-        {
-          name: 'Laura Smith',
-          id: 234
-        }
-      ];
+    const { users } = this.props;
+    const recentUsers = [];
+    const recentlyMessagedIds =
+      !!this.props.user && this.props.user.recentlyMessaged;
+    recentlyMessagedIds.forEach(recentId =>
+      users.forEach(user => {
+        if (user.id === recentId) recentUsers.push(user);
+      })
+    );
+    return recentUsers;
   };
 
   render() {
@@ -43,4 +39,16 @@ Client.propTypes = {
   recepient: PropTypes.object.isRequired
 };
 
-export default Client;
+function mapStateToProps(state) {
+  return {
+    users: state.clientReducer.users
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Client);
