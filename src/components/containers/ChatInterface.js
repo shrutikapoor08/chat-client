@@ -75,9 +75,9 @@ class ChatInterface extends React.Component {
 }
 
 ChatInterface.propTypes = {
-  actions: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-  recepient: PropTypes.object.isRequired,
+  actions: PropTypes.object,
+  user: PropTypes.object,
+  recepient: PropTypes.object,
   typingMessage: PropTypes.object,
   messages: PropTypes.array
 };

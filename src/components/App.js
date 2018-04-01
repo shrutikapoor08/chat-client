@@ -1,5 +1,6 @@
 import React from 'react';
 import Client from './containers/Client';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/clientActions';
@@ -41,5 +42,10 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(actions, dispatch)
   };
 }
+
+App.propTypes = {
+  actions: PropTypes.object,
+  users: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

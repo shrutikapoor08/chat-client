@@ -18,21 +18,22 @@ export default function clientReducer(state = initialState, action) {
       };
       return newState;
 
-    case types.TYPING:
+    case types.TYPING: {
       const { user, message } = action.value;
       newState = {
         ...state,
         typingMessage: { ...state.typingMessage, [user.id]: message }
       };
       return newState;
+    }
 
-    case types.FETCHUSERS:
+    case types.FETCHUSERS: {
       newState = {
         ...state,
         users: USERS
       };
-
       return newState;
+    }
 
     default:
       return state;

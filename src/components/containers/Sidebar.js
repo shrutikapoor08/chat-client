@@ -5,6 +5,7 @@ import '../../styles/Sidebar.scss';
 class Sidebar extends React.Component {
   render() {
     const { recentUsers } = this.props;
+    console.log(recentUsers);
     return (
       <div className="sidebar">
         <div className="team-menu">
@@ -13,7 +14,7 @@ class Sidebar extends React.Component {
         </div>
         <div className="users-list">
           <h3>Direct messages</h3>
-          {recentUsers &&
+          {recentUsers.length > 0 &&
             recentUsers.map(user => (
               <div key={user.id} className="recent-user">
                 {user.name}

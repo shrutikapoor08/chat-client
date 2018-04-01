@@ -9,10 +9,9 @@ import '../../styles/Client.scss';
 
 class Client extends React.Component {
   getRecentUsers = () => {
-    const { users } = this.props;
+    const { user, users } = this.props;
     const recentUsers = [];
-    const recentlyMessagedIds =
-      !!this.props.user && this.props.user.recentlyMessaged;
+    const recentlyMessagedIds = user ? user.recentlyMessaged : [];
     recentlyMessagedIds.forEach(recentId =>
       users.forEach(user => {
         if (user.id === recentId) recentUsers.push(user);
@@ -50,5 +49,10 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(actions, dispatch)
   };
 }
+
+Client.propTypes = {
+  actions: PropTypes.object,
+  users: PropTypes.array
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Client);
