@@ -28,6 +28,16 @@
 ## TODOs
 
 1. Extract out Laura and Bob from components and move them to constants `users.json`. [DONE]
+2. TODO: show preview in imageuplaoder. [done]
+3. TODO: add uploaded images to the message feed in redux. keep a reference for future use. [done]
+4. TODO: add ability to render an uploaded image in the chat client. [done]
+5. TODO: add adbility to cancel an uploade image (bonus) [done]
+6. TODO: implement CSS [done]
+7. TODO: fix issue with large text. add text-overflow: wrap [done]
+8. TODO: fix issue with css - implement scroll. (position: relative)
+9. TODO: fix issue: when an image is sent, the file name should disappear in the input field
+10. TODO: implement ability to send multiple images.
+11. TODO: do a CSS cleanup and fix stylistic issues.
 
 ## Having Issues? Try these things first.
 
