@@ -84,6 +84,10 @@
     }
   }
   .preview-image {
-    max-height: 100px;
+    .image {
+      max-height: 100px;
+      position: absolute;
+      top: -140px;
+    }
   }
 }
