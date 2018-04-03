@@ -6,6 +6,7 @@ import moment from 'moment';
 import * as actions from '../../actions/clientActions';
 import MessageTextInput from '../MessageTextInput';
 import MessageThread from '../MessageThread';
+import ImageUploader from '../ImageUploader.jsx';
 import '../../styles/ChatInterface.scss';
 
 class ChatInterface extends React.Component {
@@ -22,23 +23,44 @@ class ChatInterface extends React.Component {
   };
 
   onSend = () => {
-    const { typingMessage, recepient, user } = this.props;
+    const { typingMessage, recepient, user, pendingImage } = this.props;
     const timestamp = moment(); //TODO: change this to human readable format
     const typedMessage = typingMessage[user.id];
+    const image = pendingImage[user.id];
     const message = {
       timestamp,
       recepient,
       user,
+      image,
       message: typedMessage
     };
+
     this.props.actions.sendMessage(message);
-    this.props.actions.typingMessage({ user: user, message: null });
+    this.props.actions.typingMessage({
+      user: user,
+      message: null,
+      image: null
+    });
   };
 
   onStartTyping = event => {
+    const { user } = this.props;
+    // const image =
+    //   this.props.typingMessage[user.id] &&
+    //   this.props.typingMessage[user.id].message
+    //     ? this.props.typingMessage[user.id].message.image
+    //     : null;
+    //
+    // const text =
+    //   this.props.typingMessage[user.id] &&
+    //   this.props.typingMessage[user.id].message
+    //     ? this.props.typingMessage[user.id].message.text
+    //     : '';
     const messageTyped = {
       user: this.props.user,
-      message: event.target.value
+      message: {
+        text: event.target.value
+      }
     };
 
     this.props.actions.typingMessage(messageTyped);
@@ -63,12 +85,19 @@ class ChatInterface extends React.Component {
           isTyping={isReceipientTyping}
         />
 
-        <MessageTextInput
-          name="message"
-          onChange={this.onStartTyping}
-          placeholder={placeholderString}
-          onKeyDown={this.onKeyDownHandler}
-        />
+        <div className="message-input">
+          <MessageTextInput
+            name="message"
+            onChange={this.onStartTyping}
+            placeholder={placeholderString}
+            onKeyDown={this.onKeyDownHandler}
+          />
+
+          <ImageUploader
+            user={this.props.user}
+            recepient={this.props.recepient}
+          />
+        </div>
       </div>
     );
   }
@@ -85,7 +114,8 @@ ChatInterface.propTypes = {
 function mapStateToProps(state) {
   return {
     messages: state.clientReducer.messages,
-    typingMessage: state.clientReducer.typingMessage
+    typingMessage: state.clientReducer.typingMessage,
+    pendingImage: state.clientReducer.pendingImage
   };
 }
 

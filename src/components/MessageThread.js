@@ -16,7 +16,7 @@ const MessageThread = ({ exchangedMessages, recepient, user, isTyping }) => {
           {exchangedMessages.map(message => (
             <Message
               key={message.timestamp}
-              content={message.message}
+              content={message}
               recepient={message.recepient}
               user={user}
               timestamp={message.timestamp}

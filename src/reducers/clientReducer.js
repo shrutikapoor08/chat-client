@@ -4,15 +4,14 @@ import USERS from '../constants/users.js';
 const initialState = {
   messages: [],
   typingMessage: {},
-  users: []
+  users: [],
+  pendingImage: {}
 };
 
 export default function clientReducer(state = initialState, action) {
-  let newState;
-
   switch (action.type) {
     case types.SENDMESSAGE:
-      newState = {
+      const newState = {
         ...state,
         messages: [...state.messages, action.value]
       };
@@ -20,18 +19,30 @@ export default function clientReducer(state = initialState, action) {
 
     case types.TYPING: {
       const { user, message } = action.value;
-      newState = {
+      const newState = {
         ...state,
-        typingMessage: { ...state.typingMessage, [user.id]: message }
+        typingMessage: { ...state.typingMessage, [user.id]: { ...message } }
       };
+
       return newState;
     }
 
     case types.FETCHUSERS: {
-      newState = {
+      const newState = {
         ...state,
         users: USERS
       };
+      return newState;
+    }
+
+    case 'UPLOADIMAGE': {
+      const { user, image } = action.value;
+      const newState = {
+        ...state,
+        pendingImage: { ...state.pendingImage, [user.id]: { ...image } }
+      };
+      //TODO: implement this
+
       return newState;
     }
 

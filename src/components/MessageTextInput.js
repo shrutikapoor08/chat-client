@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MessageTextInput = ({ name, onChange, placeholder, onKeyDown }) => {
   return (
-    <div className="message-input">
+    <div>
       <input
         className="textinput"
         name={name}

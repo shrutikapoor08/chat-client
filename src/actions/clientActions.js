@@ -20,3 +20,10 @@ export function fetchUsers(value) {
     value: value
   };
 }
+
+export function uploadImage(value) {
+  return {
+    type: 'UPLOADIMAGE',
+    value: value
+  };
+}
