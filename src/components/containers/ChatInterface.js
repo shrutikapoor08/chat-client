@@ -38,26 +38,19 @@ class ChatInterface extends React.Component {
     this.props.actions.sendMessage(message);
     this.props.actions.typingMessage({
       user: user,
-      message: null,
+      message: null
+    });
+
+    this.props.actions.uploadImage({
+      user: user,
       image: null
     });
   };
 
   onStartTyping = event => {
     const { user } = this.props;
-    // const image =
-    //   this.props.typingMessage[user.id] &&
-    //   this.props.typingMessage[user.id].message
-    //     ? this.props.typingMessage[user.id].message.image
-    //     : null;
-    //
-    // const text =
-    //   this.props.typingMessage[user.id] &&
-    //   this.props.typingMessage[user.id].message
-    //     ? this.props.typingMessage[user.id].message.text
-    //     : '';
     const messageTyped = {
-      user: this.props.user,
+      user: user,
       message: {
         text: event.target.value
       }
@@ -67,20 +60,20 @@ class ChatInterface extends React.Component {
   };
 
   render() {
-    const placeholderString = `Send a message to ${this.props.recepient.name}`;
-    const isReceipientTyping = this.props.typingMessage[this.props.recepient.id]
-      ? true
-      : false;
+    const { user, recepient, typingMessage } = this.props;
+    const placeholderString = `Send a message to ${recepient.name}`;
+    const isReceipientTyping =
+      !!typingMessage[recepient.id] && !!typingMessage[recepient.id].text;
 
     return (
       <div className="chat-interface">
         <div className="recepient-menu">
-          <span className="recepient-name">{this.props.recepient.name}</span>
+          <span className="recepient-name">{recepient.name}</span>
         </div>
 
         <MessageThread
-          user={this.props.user}
-          recepient={this.props.recepient}
+          user={user}
+          recepient={recepient}
           exchangedMessages={this.getMessages()}
           isTyping={isReceipientTyping}
         />
@@ -93,10 +86,7 @@ class ChatInterface extends React.Component {
             onKeyDown={this.onKeyDownHandler}
           />
 
-          <ImageUploader
-            user={this.props.user}
-            recepient={this.props.recepient}
-          />
+          <ImageUploader user={user} recepient={recepient} />
         </div>
       </div>
     );

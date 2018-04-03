@@ -14,6 +14,8 @@
   }
 
   .message-thread {
+    text-overflow: wrap;
+    position: relative;
     .message-text {
       margin-bottom: 4rem;
       width: 100%;
@@ -21,7 +23,9 @@
       .sent {
         background: dodgerblue;
         float: right;
-        max-width: 60%;
+        flex-grow: wrap;
+        display: flex;
+        margin-left: 4em;
         border-radius: 30px;
         padding: 10px 35px;
         border: 1px solid #e8e8e8;
@@ -29,7 +33,9 @@
       .received {
         background: mediumseagreen;
         float: left;
-        max-width: 60%;
+        flex-grow: wrap;
+        display: flex;
+        margin-right: 4em;
         border-radius: 30px;
         padding: 10px 35px;
         border: 1px solid #e8e8e8;
@@ -41,6 +47,14 @@
       }
       &:hover .meta {
         display: block;
+      }
+      .message-image {
+        max-height: 200px;
+        max-width: 100%;
+        width: auto;
+        padding: 2px;
+        display: block;
+        margin: 0 auto;
       }
     }
     .isTyping {
@@ -68,7 +82,8 @@
       flex-basis: 90%;
       font-size: 1rem;
     }
-    .image-uploader {
-    }
+  }
+  .preview-image {
+    max-height: 100px;
   }
 }
