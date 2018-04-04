@@ -13,8 +13,13 @@
     }
   }
 
+  .message-pane {
+    height: 720px;
+    width: 90%;
+    position: absolute;
+    overflow: auto;
+  }
   .message-thread {
-    text-overflow: wrap;
     position: relative;
     .message-text {
       margin-bottom: 4rem;

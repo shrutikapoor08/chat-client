@@ -71,12 +71,14 @@ class ChatInterface extends React.Component {
           <span className="recepient-name">{recepient.name}</span>
         </div>
 
-        <MessageThread
-          user={user}
-          recepient={recepient}
-          exchangedMessages={this.getMessages()}
-          isTyping={isReceipientTyping}
-        />
+        <div className="message-pane">
+          <MessageThread
+            user={user}
+            recepient={recepient}
+            exchangedMessages={this.getMessages()}
+            isTyping={isReceipientTyping}
+          />
+        </div>
 
         <div className="message-input">
           <MessageTextInput
