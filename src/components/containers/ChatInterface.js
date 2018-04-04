@@ -52,7 +52,9 @@ class ChatInterface extends React.Component {
 
   isMessageValid = draftMessage => {
     const { image, message } = draftMessage;
-    return message.trim().length > 0 || !_.isEmpty(image);
+    const isValidText = message.length > 0 && message.trim().length > 0;
+    console.log('isValidText', isValidText);
+    return isValidText || !_.isEmpty(image);
   };
 
   onStartTyping = event => {
@@ -94,7 +96,9 @@ class ChatInterface extends React.Component {
             onKeyDown={this.onKeyDownHandler}
           />
 
-          <ImageUploader user={user} recepient={recepient} />
+          <div className="image-container">
+            <ImageUploader user={user} recepient={recepient} />
+          </div>
         </div>
       </div>
     );

@@ -30,7 +30,9 @@ class ImageUploader extends React.Component {
         image: image
       });
     };
-    reader.readAsDataURL(file);
+    if (reader && file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   cancelUpload = () => {
