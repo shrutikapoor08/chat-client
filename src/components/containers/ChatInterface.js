@@ -53,7 +53,6 @@ class ChatInterface extends React.Component {
   isMessageValid = draftMessage => {
     const { image, message } = draftMessage;
     const isValidText = message.length > 0 && message.trim().length > 0;
-    console.log('isValidText', isValidText);
     return isValidText || !_.isEmpty(image);
   };
 

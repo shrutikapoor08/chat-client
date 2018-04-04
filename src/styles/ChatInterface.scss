@@ -28,9 +28,8 @@
       .sent {
         background: dodgerblue;
         float: right;
-        flex-wrap: wrap;
         word-break: break-all;
-        display: flex;
+        display: block;
         margin-left: 4em;
         border-radius: 30px;
         padding: 10px 35px;
@@ -39,9 +38,8 @@
       .received {
         background: mediumseagreen;
         float: left;
-        flex-grow: wrap;
         word-break: break-all;
-        display: flex;
+        display: block;
         margin-right: 4em;
         border-radius: 30px;
         padding: 10px 35px;
@@ -55,13 +53,19 @@
       &:hover .meta {
         display: block;
       }
-      .message-image {
-        max-height: 200px;
-        max-width: 100%;
-        width: auto;
-        padding: 2px;
-        display: block;
-        margin: 0 auto;
+      .message-image-container {
+        display: flex;
+        height: 300px;
+        width: 300px;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .message-image {
+          width: 100%;
+          padding: 2px;
+          flex: none;
+        }
       }
     }
     .isTyping {
