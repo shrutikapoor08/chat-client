@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
@@ -25,35 +26,40 @@ class ChatInterface extends React.Component {
   onSend = () => {
     const { typingMessage, recepient, user, pendingImage } = this.props;
     const timestamp = moment(); //TODO: change this to human readable format
-    const typedMessage = typingMessage[user.id];
+    const typedMessage = !!typingMessage[user.id] && typingMessage[user.id];
     const image = pendingImage[user.id];
-    const message = {
+    const draftMessage = {
       timestamp,
       recepient,
       user,
       image,
       message: typedMessage
     };
+    if (this.isMessageValid(draftMessage)) {
+      this.props.actions.sendMessage(draftMessage);
 
-    this.props.actions.sendMessage(message);
-    this.props.actions.typingMessage({
-      user: user,
-      message: null
-    });
+      this.props.actions.typingMessage({
+        user: user,
+        message: null
+      });
 
-    this.props.actions.uploadImage({
-      user: user,
-      image: null
-    });
+      this.props.actions.uploadImage({
+        user: user,
+        image: {}
+      });
+    }
+  };
+
+  isMessageValid = draftMessage => {
+    const { image, message } = draftMessage;
+    return message.trim().length > 0 || !_.isEmpty(image);
   };
 
   onStartTyping = event => {
     const { user } = this.props;
     const messageTyped = {
       user: user,
-      message: {
-        text: event.target.value
-      }
+      message: event.target.value
     };
 
     this.props.actions.typingMessage(messageTyped);
@@ -63,7 +69,7 @@ class ChatInterface extends React.Component {
     const { user, recepient, typingMessage } = this.props;
     const placeholderString = `Send a message to ${recepient.name}`;
     const isReceipientTyping =
-      !!typingMessage[recepient.id] && !!typingMessage[recepient.id].text;
+      !!typingMessage[recepient.id] && !!typingMessage[recepient.id].length > 0;
 
     return (
       <div className="chat-interface">

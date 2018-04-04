@@ -23,7 +23,7 @@ export function fetchUsers(value) {
 
 export function uploadImage(value) {
   return {
-    type: 'UPLOADIMAGE',
+    type: types.UPLOADIMAGE,
     value: value
   };
 }

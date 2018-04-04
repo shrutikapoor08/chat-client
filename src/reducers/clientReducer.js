@@ -21,7 +21,7 @@ export default function clientReducer(state = initialState, action) {
       const { user, message } = action.value;
       const newState = {
         ...state,
-        typingMessage: { ...state.typingMessage, [user.id]: { ...message } }
+        typingMessage: { ...state.typingMessage, [user.id]: message }
       };
 
       return newState;
@@ -35,13 +35,12 @@ export default function clientReducer(state = initialState, action) {
       return newState;
     }
 
-    case 'UPLOADIMAGE': {
+    case types.UPLOADIMAGE: {
       const { user, image } = action.value;
       const newState = {
         ...state,
         pendingImage: { ...state.pendingImage, [user.id]: { ...image } }
       };
-      //TODO: implement this
 
       return newState;
     }

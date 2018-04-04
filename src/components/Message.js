@@ -8,7 +8,7 @@ const Message = ({ content, recepient, user }) => {
   return (
     <div className="message-text">
       <div className={user.id === recepient.id ? 'received' : 'sent'}>
-        <span>{message && message.text}</span>
+        <span>{message}</span>
         {image && (
           <img
             src={image.imageSrc}
