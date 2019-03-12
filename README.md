@@ -34,7 +34,7 @@
 5. TODO: add adbility to cancel an uploade image (bonus) [done]
 6. TODO: implement CSS [done]
 7. TODO: fix issue with large text. add text-overflow: wrap [done]
-8. TODO: fix issue with css - implement scroll. (position: relative)
+8. TODO: fix issue with css - implement scroll. (position: relative) [done]
 9. TODO: fix issue: when an image is sent, the file name should disappear in the input field
 10. TODO: implement ability to send multiple images.
 11. TODO: do a CSS cleanup and fix stylistic issues.
